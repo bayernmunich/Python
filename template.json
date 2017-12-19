@@ -1,0 +1,506 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_pyton_name": {
+            "defaultValue": "pyton",
+            "type": "String"
+        },
+        "components_pyton_name": {
+            "defaultValue": "pyton",
+            "type": "String"
+        },
+        "config_web_name": {
+            "defaultValue": "web",
+            "type": "String"
+        },
+        "serverfarms_pyton_hostingPlan_name": {
+            "defaultValue": "pyton-hostingPlan",
+            "type": "String"
+        },
+        "deployments_91513676761425_name": {
+            "defaultValue": "91513676761425",
+            "type": "String"
+        },
+        "deployments_81513676182835_name": {
+            "defaultValue": "81513676182835",
+            "type": "String"
+        },
+        "deployments_81513676131195_name": {
+            "defaultValue": "81513676131195",
+            "type": "String"
+        },
+        "deployments_71513662837614_name": {
+            "defaultValue": "71513662837614",
+            "type": "String"
+        },
+        "deployments_71513662785162_name": {
+            "defaultValue": "71513662785162",
+            "type": "String"
+        },
+        "deployments_31513660464566_name": {
+            "defaultValue": "31513660464566",
+            "type": "String"
+        },
+        "deployments_31513660437360_name": {
+            "defaultValue": "31513660437360",
+            "type": "String"
+        },
+        "deployments_21513659461697_name": {
+            "defaultValue": "21513659461697",
+            "type": "String"
+        },
+        "deployments_21513659429731_name": {
+            "defaultValue": "21513659429731",
+            "type": "String"
+        },
+        "deployments_11513594624780_name": {
+            "defaultValue": "11513594624780",
+            "type": "String"
+        },
+        "hostNameBindings_pyton.azurewebsites.net_name": {
+            "defaultValue": "pyton.azurewebsites.net",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourceGroups/pyton912a/providers/microsoft.insights/components/pyton'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_pyton_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "southcentralus",
+            "tags": {
+                "hidden-link:/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourceGroups/pyton912a/providers/Microsoft.Web/sites/pyton": "Resource"
+            },
+            "scale": null,
+            "properties": {
+                "ApplicationId": "[parameters('components_pyton_name')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourceGroups/pyton912a/providers/Microsoft.Web/serverfarms/pyton-hostingPlan'.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
+                "capacity": 0
+            },
+            "kind": "app",
+            "name": "[parameters('serverfarms_pyton_hostingPlan_name')]",
+            "apiVersion": "2016-09-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "name": "[parameters('serverfarms_pyton_hostingPlan_name')]",
+                "workerTierName": null,
+                "adminSiteName": null,
+                "hostingEnvironmentProfile": null,
+                "perSiteScaling": false,
+                "reserved": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourceGroups/pyton912a/providers/Microsoft.Web/sites/pyton'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[parameters('sites_pyton_name')]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "tags": {
+                "hidden-related:/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/serverfarms/pyton-hostingPlan": "empty"
+            },
+            "scale": null,
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_pyton_name'),'.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('sites_pyton_name'),'.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_pyton_hostingPlan_name'))]",
+                "reserved": false,
+                "siteConfig": null,
+                "scmSiteAlsoStopped": false,
+                "hostingEnvironmentProfile": null,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "cloningInfo": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_pyton_hostingPlan_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourceGroups/pyton912a/providers/Microsoft.Web/sites/pyton/config/web'.",
+            "type": "Microsoft.Web/sites/config",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('config_web_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "tags": {
+                "hidden-related:/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/serverfarms/pyton-hostingPlan": "empty"
+            },
+            "scale": null,
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "phpVersion": "7.1",
+                "pythonVersion": "",
+                "nodeVersion": "",
+                "linuxFxVersion": "",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": null,
+                "httpLoggingEnabled": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$pyton",
+                "publishingPassword": null,
+                "appSettings": null,
+                "metadata": null,
+                "connectionStrings": null,
+                "machineKey": null,
+                "handlerMappings": null,
+                "documentRoot": null,
+                "scmType": "VSTSRM",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "javaVersion": null,
+                "javaContainer": null,
+                "javaContainerVersion": null,
+                "appCommandLine": "",
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false,
+                        "virtualDirectories": null
+                    }
+                ],
+                "winAuthAdminState": 0,
+                "winAuthTenantState": 0,
+                "customAppPoolIdentityAdminState": false,
+                "customAppPoolIdentityTenantState": false,
+                "runtimeADUser": null,
+                "runtimeADUserPassword": null,
+                "loadBalancing": "LeastRequests",
+                "routingRules": [],
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "limits": null,
+                "autoHealEnabled": false,
+                "autoHealRules": null,
+                "tracingOptions": null,
+                "vnetName": "",
+                "siteAuthEnabled": false,
+                "siteAuthSettings": {
+                    "enabled": null,
+                    "unauthenticatedClientAction": null,
+                    "tokenStoreEnabled": null,
+                    "allowedExternalRedirectUrls": null,
+                    "defaultProvider": null,
+                    "clientId": null,
+                    "clientSecret": null,
+                    "issuer": null,
+                    "allowedAudiences": null,
+                    "additionalLoginParams": null,
+                    "isAadAutoProvisioned": false,
+                    "googleClientId": null,
+                    "googleClientSecret": null,
+                    "googleOAuthScopes": null,
+                    "facebookAppId": null,
+                    "facebookAppSecret": null,
+                    "facebookOAuthScopes": null,
+                    "twitterConsumerKey": null,
+                    "twitterConsumerSecret": null,
+                    "microsoftAccountClientId": null,
+                    "microsoftAccountClientSecret": null,
+                    "microsoftAccountOAuthScopes": null
+                },
+                "cors": null,
+                "push": null,
+                "apiDefinition": null,
+                "autoSwapSlotName": null,
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/91513676761425'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_91513676761425_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_91513676761425_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"9\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-9\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T09:46:07.4822997Z",
+                "end_time": "2017-12-19T09:46:07.4822997Z",
+                "active": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/81513676182835'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_81513676182835_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_81513676182835_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"8\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-8\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T09:36:28.4988433Z",
+                "end_time": "2017-12-19T09:36:28.4988433Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/81513676131195'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_81513676131195_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_81513676131195_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Install Extensions\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"8\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-8\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T09:35:37.7509841Z",
+                "end_time": "2017-12-19T09:35:37.7509841Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/71513662837614'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_71513662837614_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_71513662837614_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"7\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-7\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T05:54:03.6264352Z",
+                "end_time": "2017-12-19T05:54:03.6264352Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/71513662785162'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_71513662785162_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_71513662785162_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Install Extensions\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"7\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-7\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T05:53:11.9537259Z",
+                "end_time": "2017-12-19T05:53:11.9537259Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/31513660464566'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_31513660464566_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_31513660464566_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"3\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-3\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T05:14:29.9568526Z",
+                "end_time": "2017-12-19T05:14:29.9568526Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/31513660437360'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_31513660437360_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_31513660437360_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Install Extensions\",\"commitId\":\"897e22f7684f0cd1613924d95a3b341cdb4291de\",\"buildId\":\"3\",\"releaseId\":\"3\",\"buildNumber\":\"20171219.2\",\"releaseName\":\"Release-3\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T05:14:03.6973438Z",
+                "end_time": "2017-12-19T05:14:03.6973438Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/21513659461697'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_21513659461697_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_21513659461697_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"833d0b0241a1c789d1db769030d219f9cdfd9ff3\",\"buildId\":\"2\",\"releaseId\":\"2\",\"buildNumber\":\"20171219.1\",\"releaseName\":\"Release-2\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T04:57:47.0661272Z",
+                "end_time": "2017-12-19T04:57:47.0661272Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/21513659429731'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_21513659429731_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_21513659429731_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Install Extensions\",\"commitId\":\"833d0b0241a1c789d1db769030d219f9cdfd9ff3\",\"buildId\":\"2\",\"releaseId\":\"2\",\"buildNumber\":\"20171219.1\",\"releaseName\":\"Release-2\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-19T04:57:16.5952717Z",
+                "end_time": "2017-12-19T04:57:16.5952717Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourcegroups/pyton912a/providers/Microsoft.Web/sites/pyton/deployments/11513594624780'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('deployments_11513594624780_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_11513594624780_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Aniruddha Jere",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"8c02b6a4c9db455d192a6aa221bf1ed240dc4b26\",\"buildId\":\"1\",\"releaseId\":\"1\",\"buildNumber\":\"20171218.1\",\"releaseName\":\"Release-1\",\"repoProvider\":\"TfsGit\",\"repoName\":\"pyton\",\"collectionUrl\":\"https://pyton7.visualstudio.com/\",\"teamProject\":\"801806fa-34fb-41fc-9cd5-5c4bf30a0a68\",\"slotName\":\"Production\"}",
+                "start_time": "2017-12-18T10:57:04.9424415Z",
+                "end_time": "2017-12-18T10:57:04.9424415Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/bd6bd12d-6929-43df-a6b4-edeca09e8a71/resourceGroups/pyton912a/providers/Microsoft.Web/sites/pyton/hostNameBindings/pyton.azurewebsites.net'.",
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "name": "[concat(parameters('sites_pyton_name'), '/', parameters('hostNameBindings_pyton.azurewebsites.net_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "South Central US",
+            "scale": null,
+            "properties": {
+                "siteName": "pyton",
+                "domainId": null,
+                "hostNameType": "Verified"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_pyton_name'))]"
+            ]
+        }
+    ]
+}

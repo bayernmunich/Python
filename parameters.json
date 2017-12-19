@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_pyton_name": {
+            "value": null
+        },
+        "components_pyton_name": {
+            "value": null
+        },
+        "config_web_name": {
+            "value": null
+        },
+        "serverfarms_pyton_hostingPlan_name": {
+            "value": null
+        },
+        "deployments_91513676761425_name": {
+            "value": null
+        },
+        "deployments_81513676182835_name": {
+            "value": null
+        },
+        "deployments_81513676131195_name": {
+            "value": null
+        },
+        "deployments_71513662837614_name": {
+            "value": null
+        },
+        "deployments_71513662785162_name": {
+            "value": null
+        },
+        "deployments_31513660464566_name": {
+            "value": null
+        },
+        "deployments_31513660437360_name": {
+            "value": null
+        },
+        "deployments_21513659461697_name": {
+            "value": null
+        },
+        "deployments_21513659429731_name": {
+            "value": null
+        },
+        "deployments_11513594624780_name": {
+            "value": null
+        },
+        "hostNameBindings_pyton.azurewebsites.net_name": {
+            "value": null
+        }
+    }
+}
